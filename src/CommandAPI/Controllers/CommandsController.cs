@@ -44,8 +44,8 @@ namespace CommandAPI.Controllers
             }
             return Ok(_mapper.Map<CommandReadDto>(CommandItem));
         }
-      [HttpPut("{id}")]
-            public ActionResult UpdateCommand(int id, CommandUpdateDto commandUpdateDto)
+      [HttpPut]
+            public IActionResult UpdateCommand([FromQuery]int id, [FromBody]CommandUpdateDto commandUpdateDto)
             {
             var commandModelFromRepo = _repository.GetCommandById(id);
             if (commandModelFromRepo != null)
